@@ -1,0 +1,24 @@
+-- Hook Examples (for 3rd party addons/code):
+if SERVER then
+	-- Serverside Hooks
+	hook.Add('CaptainPRICE.FakeOverlay.OnClose', 'Teleport victim when they close fake overlay', function(clickedWhat, ply)
+		ply:SetPos(vector_origin)
+	end)
+
+	hook.Add('CaptainPRICE.FakeOverlay.OnShown', 'Notify everybody when victim receives fake overlay', function(message, ply)
+		PrintMessage(HUD_PRINTCENTER, ply:Nick() .. ' has received fake overlay (' .. message .. ').')
+	end)
+
+	hook.Add('CaptainPRICE.FakeOverlay.OnBadNetMsg', 'Log bad Net requests of fake overlay', function(ply)
+		ErrorNoHalt('FakeOverlay: Detected bad (request) network from ' .. ply:SteamID() .. ' player!\n')
+	end)
+elseif CLIENT then
+	-- Clientside Hooks
+	hook.Add('CaptainPRICE.FakeOverlay.OnClose', 'Print info when local player closes fake overlay', function(clickedWhat)
+		print('You have closed fake overlay (by clicking ' .. (clickedWhat and 'x sign' or 'close button') .. ').')
+	end)
+
+	hook.Add('CaptainPRICE.FakeOverlay.OnShown', 'Print info when local player receives fake overlay', function(message)
+		print('You have received fake overlay (' .. message .. ').')
+	end)
+end
