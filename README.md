@@ -27,6 +27,10 @@ addons
 ```
 
 <br>
+# Usage
+By default, any admin on the server will be granted to run/execute the `sv_send_fakeover` console command. For more information, submit `help sv_send_fakeover` in Console.
+
+<br>
 # Documentation for 3rd party addons / Extensibility
 If you are looking for documentation and/or code examples then navigate to the [wiki](https://github.com/CaptainPRICE/gmod-fakeoverlay/wiki/Extensibility#example-code).
 
