@@ -73,9 +73,9 @@ local Player_IsMuted, Player_SetMuted = PLAYER.IsMuted, PLAYER.SetMuted
 
 local CV_snd_musicvolume, CV_volume = GetConVar 'snd_musicvolume', GetConVar 'volume'
 local color_black, color_white = color_black, color_white -- If they are globals, we cache and localize all of them.
-local m_BackgroundMaterial = Material 'fakeover/bg.png'
-local m_GModLogoBraveMaterial = Material 'fakeover/gmod_logo_brave.png'
-local m_vMaterial = Material 'fakeover/v.png'
+local m_BackgroundMaterial = Material '../html/img/bg.jpg'
+local m_GModLogoBraveMaterial = Material '../html/img/gmod_logo_brave.png'
+--local m_vMaterial = Material 'fakeover/v.png'
 local DialogAlpha = 252 -- TODO: I am not sure of this value. It looks somewhat right.
 local DialogOutlineColor = Color(40, 40, 40)
 local DialogBackColor = Color(110, 113, 116, DialogAlpha) --Color(179, 180, 181, DialogAlpha)
@@ -160,9 +160,9 @@ do
 
 			-- Paint the ":v".
 			-- ( WH=28px )
-			ih = ih + vwh
-			surface_SetMaterial(m_vMaterial) -- :v
-			surface_DrawTexturedRectRotated(cx, cy + math_floor(vwh * .5) + 2, vwh, vwh, -(CurTime() * 36 % 360.0)) -- It takes 10 seconds to make a full circle (clockwise). I'm not sure if that modulo calc is correct..
+			--ih = ih + vwh
+			--surface_SetMaterial(m_vMaterial) -- :v
+			--surface_DrawTexturedRectRotated(cx, cy + math_floor(vwh * .5) + 2, vwh, vwh, -(CurTime() * 36 % 360.0)) -- It takes 10 seconds to make a full circle (clockwise). I'm not sure if that modulo calc is correct..
 
 			-- Paint the dialog. Oh gosh!
 			local m_iCursorX, m_iCursorY = input_GetCursorPos()
@@ -215,34 +215,3 @@ do
 		hook_Call('CaptainPRICE.FakeOverlay.OnShown', nil, m_strScreenMessage) -- For 3rd party addons support.
 	end)
 end
-
---[[
----+::FUCK WRAPPERS::+--- vgui and premade stuff sucks.
-gFakeBanOverlay = vgui.Create("DHTML")
-gFakeBanOverlay:SetHTML([[<html>
-	<head>
-		<title>Loading..</title>
-		<link rel="stylesheet" type="text/css" href="loading.css?3" />
-		<script type="text/javascript" src="js/thirdparty/jquery.js"></script>
-	</head>
-	<body>
-		<div id="container"> <!-- W=201px,  H=149+18+28=195px -->
-			<img src='img/gmod_logo_brave.png' class="bounce" /> <!-- W=201px,  H=149px -->
-			<center>
-				<br> <!-- H=18px -->
-				<div class="walk">:v</div> <!-- WH=28px -->
-			</center>
-		</div>
-	</body>
-</html>]]--[[)
-gFakeBanOverlay:Dock(FILL)
---gFakeBanOverlay:SetVisible(false)
-local frame = vgui.Create("DFrame")
-frame:SetTitle("HTML Example")
-frame:SetSize(ScrW(), ScrH())
-frame:Center()
-frame:MakePopup()
-gFakeBanOverlay = vgui.Create("HTML", frame)
-gFakeBanOverlay:Dock(FILL)
-gFakeBanOverlay:OpenURL("asset://garrysmod/html/loading.html")
-]]

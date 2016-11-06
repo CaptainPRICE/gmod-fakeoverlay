@@ -1,6 +1,6 @@
 
 -- Send resources (such as materials) for clients to download.
-do
+--[[do
 	local resource = resource
 	local resource_AddFile = resource.AddFile
 	for _, resourcePath in next, {
@@ -8,7 +8,7 @@ do
 		'materials/fakeover/gmod_logo_brave.png',
 		'materials/fakeover/v.png'
 	} do resource_AddFile(resourcePath) end
-end
+end]]
 
 -- Register the network message.
 local hook = hook
@@ -99,7 +99,7 @@ end, function(cmd, args)
 		end
 	end
 	return tbl
-end, 'Sends a fake (loading) overlay with custom message to the specified player. Use it to prank players. ** BY DEFAULT, ONLY ADMINS CAN EXECUTE THIS COMMAND **\nExample usage (double-quotes matter!): sv_send_fakeover "STEAM_0:0:65979910" "everybody hates you"', FCVAR_NONE) -- TODO: Maybe use FCVAR_UNREGISTERED flag.
+end, 'Sends a fake (loading/disconnect) overlay with custom message to the specified player. Use it to prank players. ** BY DEFAULT, ONLY ADMINS CAN EXECUTE THIS COMMAND **\nExample usage (double-quotes matter!): sv_send_fakeover "STEAM_0:0:65979910" "everybody hates you"', FCVAR_NONE) -- TODO: Maybe use FCVAR_UNREGISTERED flag.
 
 local net_Receive = net.Receive
 local net_ReadBit = net.ReadBit
