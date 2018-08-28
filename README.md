@@ -16,14 +16,14 @@ I have written this in a very very short period of time (< 48 hours), so if you 
 It is simple. Clone/Download a copy of the master branch into `./Steam/steamapps/common/GarrysMod/garrysmod/addons/gmod-fakeoverlay` folder (git will automatically create `gmod-fakeoverlay` folder for you; if you don't use git then create the folder yourself, how you name the addon folder does not really matter).  
 This is how the folder structure/hierarchy tree should look like:
 ```
-addons
-└───gmod-fakeoverlay
-    ├───lua
-    │   └───autorun
-    │       └───client
-    │       └───server
-    └───materials
-        └───fakeover
+addons  
+└───gmod-fakeoverlay  
+    ├───lua  
+    │   └───autorun  
+    │       └───client  
+    │       └───server  
+    └───materials  
+        └───fakeover  
 ```
 
 <br>
